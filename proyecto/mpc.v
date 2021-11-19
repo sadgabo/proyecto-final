@@ -5,10 +5,12 @@ module mpc(
 	output reg[31:0]inou
 );
 
-always @(posedge clk)
-inou=inin;
-initial
-begin
-inou[31:0]=32'd0;
+initial begin
+	inou[31:0]=32'd0;
 end
+
+always @(posedge clk)begin
+	inou = (inin) ? inin : 32'd0;
+end
+
 endmodule

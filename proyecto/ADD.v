@@ -1,4 +1,4 @@
-`timescale 1ns/1ns
+`timescale 1ns/1ns//fase 2
 
 module ADD(
     input [31:0]A,

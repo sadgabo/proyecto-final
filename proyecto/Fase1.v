@@ -63,9 +63,15 @@ mpc ins(
 );
 
 Sum ins0(
-    .E(c_inou),
-    .Sum(c_sum)
+     .E(c_inou),
+     .Sum(c_sum)
 );
+
+// ADD ins10(
+//     .A(c_inou),
+//     .B(32'd4),
+//     .C(c_sum)
+// );
 
 memins ins01(
     .adr(c_inou),
@@ -131,10 +137,17 @@ mux5 ins7(
     .sal2(c_mux2)
 );
 
-MUX323 ins8(
-    .o5(c_sum),
-    .select3(c_and),
-    .sal3(c_mux3)
+// MUX323 ins8(
+//     .o5(c_sum),
+//     .select3(c_and),
+//     .sal3(c_mux3)
+// );
+
+muxD ins8(
+    .pc_adder(c_sum),
+    .shift_adder(32'd0),
+	.sel(c_and),
+	.pc_out(c_mux3)
 );
 
 MUX323 ins9(

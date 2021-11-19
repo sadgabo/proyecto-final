@@ -12,21 +12,20 @@ reg [31:0]mem [0:31];
 always @*
 begin
 	if(memwrites)
-	begin
-	mem[dir]=datain;
-	end
+		begin
+		mem[dir] = datain;
+		end
 	else if(memreads)
-	begin
-	dataout=mem[dir];
-	end
+		begin
+		dataout = mem[dir];
+		end
 	else 
-	begin
-	dataout=32'dx;
-	end
-
+		begin
+		dataout = 32'dx;
+		end
 end
-initial
-begin     
+
+initial begin     
 	mem[0]=32'd65;
 	mem[1]=32'd110;
 	mem[2]=32'd103;

@@ -13,9 +13,10 @@ always @*
 begin 
 	datolec1 = brr[dirlec1];
 	datolec2 = brr[dirlec2];
-	if(enesc==1)
+
+	if(enesc == 1)
 	begin
-		brr[diresc] = datoesc;
+		brr[diresc] <= datoesc;
 	end
 end
 initial 

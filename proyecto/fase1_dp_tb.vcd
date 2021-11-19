@@ -1,5 +1,5 @@
 $date
-	Fri Nov 19 09:05:53 2021
+	Fri Nov 19 14:02:28 2021
 $end
 $version
 	Icarus Verilog
@@ -98,85 +98,15 @@ $var wire 1 ( selec $end
 $var reg 5 U sal2 [4:0] $end
 $upscope $end
 $scope module ins8 $end
-$var wire 32 V o5 [31:0] $end
-$var wire 1 " select3 $end
-$var reg 32 W sal3 [31:0] $end
+$var wire 32 V pc_adder [31:0] $end
+$var wire 1 " sel $end
+$var wire 32 W shift_adder [31:0] $end
+$var reg 32 X pc_out [31:0] $end
 $upscope $end
 $scope module ins9 $end
-$var wire 32 X o5 [31:0] $end
+$var wire 32 Y o5 [31:0] $end
 $var wire 1 6 select3 $end
-$var reg 32 Y sal3 [31:0] $end
+$var reg 32 Z sal3 [31:0] $end
 $upscope $end
 $upscope $end
 $upscope $end
-$enddefinitions $end
-#0
-$dumpvars
-bx Y
-bx X
-b1 W
-b100 V
-bx U
-bx T
-bx S
-bx R
-bx Q
-bx P
-bx O
-bx N
-bx M
-bx L
-bx K
-bx J
-bx I
-bx H
-bx G
-bx F
-bx E
-bx D
-bx C
-bx B
-bx A
-bx @
-bx ?
-bx >
-bx =
-b0 <
-b100 ;
-b0 :
-b0 9
-b1 8
-bx 7
-x6
-x5
-bx 4
-bx 3
-bx 2
-x1
-b0 0
-bx /
-x.
-x-
-bx ,
-bx +
-b1 *
-bx )
-x(
-bx '
-x&
-bx %
-b100 $
-x#
-x"
-0!
-$end
-#50
-b101 $
-b101 ;
-b101 V
-b1 0
-b1 9
-b1 :
-b1 <
-0!
-#100
