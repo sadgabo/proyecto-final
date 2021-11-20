@@ -5,11 +5,10 @@ module mux32(
 	input sell,
 	output reg [31:0] sal
 );
-always@*
-	begin 
-	if (sell)
-	sal=o1;
-	else 
-	sal=o2;
-	end
+always @* begin
+ 	case(sell)
+		1'b1: sal = o1;
+		1'b0: sal = o2;
+	endcase
+end
 endmodule

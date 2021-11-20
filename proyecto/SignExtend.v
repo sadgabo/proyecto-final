@@ -8,9 +8,8 @@ module SignExtend(
 always @*
 begin
     if(SEentrada[15])
-    SEsalida={16'd1,SEentrada};
+        SEsalida={16'd1,SEentrada};
     else
-    SEsalida={16'd0,SEentrada};
+        SEsalida={16'd0,SEentrada};
 end
-
 endmodule

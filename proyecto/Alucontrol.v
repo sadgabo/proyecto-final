@@ -6,31 +6,14 @@ module Alucontrol(
 );
 always@*
 	case(uc)
-	3'b111:
-	begin
-	case (ins)
-	6'b100000:
-	begin
-	so = 3'b001;
-	end
-	6'b100100:
-	begin
-	so = 3'b111;
-	end
-	6'b100101:
-	begin
-	so = 3'b000;
-	end
-	6'b100010:
-	begin
-	so = 3'b100;
-	end
-	6'b101010:
-	begin
-	so = 3'b101;
-	end
+		3'b111: begin
+			case (ins)
+			6'b100000: so = 3'b001;
+			6'b100100: so = 3'b111;
+			6'b100101: so = 3'b000;
+			6'b100010: so = 3'b100;
+			6'b101010: so = 3'b101;
+			endcase
+		end
 	endcase
-end
-endcase
 endmodule
-	

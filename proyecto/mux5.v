@@ -5,11 +5,10 @@ module mux5(
 	input selec,
 	output reg [4:0] sal2
 );
-always@*
-	begin 
-	if (selec)
-	sal2=o3;
-	else 
-	sal2=o4;
-	end
+always @* begin
+	case(select)
+		1'b1: sal2 = o3;
+		1'b0: sal2 = o4;
+	endcase
+end
 endmodule
