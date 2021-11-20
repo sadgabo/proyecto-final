@@ -5,44 +5,18 @@ module Alu(
    output reg[31:0]Result,//C
    output reg zflag
 );
-   
-always @*
- begin
+
+always @* begin
      case(sel)
-     3'b000:
-     begin
-        Result=op1+op2;
-     end
-     3'b001:
-     begin
-        Result =op1-op2;
-     end
-     3'b011:
-     begin
-        Result=op1*op2;
-     end
-     3'b100:
-     begin
-        Result=op1/op2;
-     end
-     3'b101:
-     begin
-        Result = op1 & op2;
-     end
-     3'b111:
-     begin
-        Result = op1 | op2;
-     end
-     3'b110:
-     begin
-        Result = op1<<1;
-     end
-     3'b010:
-     begin
-        Result = op1<op2?1:0; //op1 ^ op2;
-     end
+         3'b000: Result = op1 + op2;
+         3'b001: Result = op1 - op2;
+         3'b011: Result = op1 * op2;
+         3'b100: Result = op1 / op2;
+         3'b101: Result = op1 & op2;
+         3'b111: Result = op1 | op2;
+         3'b110: Result = op1 << 1;
+         3'b010: Result = op1 < op2 ? 1 : 0; //op1 ^ op2;
      endcase
-zflag<=(!Result)? 0 : 1;
-    
+     zflag<=(!Result)? 0 : 1;
 end
 endmodule

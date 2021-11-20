@@ -7,12 +7,10 @@ module memins(
 
 reg [7:0] Sram [0:399];
 
-initial begin
-	$readmemb("TestF1_MemInsts.mem", Sram);
-end
+initial $readmemb("TestF1_MemInsts.mem", Sram);
 
 always @* begin
-	instruccion={Sram[adr],Sram[adr+1],Sram[adr+2],Sram[adr+3]};
+	instruccion = { Sram[adr], Sram[adr+1], Sram[adr+2], Sram[adr+3] };
 end
 
 endmodule
