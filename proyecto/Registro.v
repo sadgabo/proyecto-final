@@ -10,7 +10,7 @@ module Registro(
 );
 reg [31:0] brr [0:31];
 
-initial $readmemb("TestF1_Breg.mem", brr);
+initial $readmemb("TestF2_MemInst.mem", brr);
 
 always @* begin
 	datolec1 = brr[dirlec1];

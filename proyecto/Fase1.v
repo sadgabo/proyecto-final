@@ -52,66 +52,77 @@ wire [31:0]c_inou;
 //COMPUERTA AND
 wire c_and;
 
+//Shift left 2 
+wire [31:0]c_ShiftOut;
 
+//ADD
+wire [31:0]c_AddOut;
 
-assign c_and = c_zflag & c_branch;
+//Sign-extend
+wire [31:0]c_SignOut;
 
-mpc ins(
+//BUfer IF/ID
+wire [31:0]c_AdderOut1;
+wire [31:0]c_instmemOut;
+
+//Bufer ID/EX
+wire [31:0]c_AdderOut2;
+wire [31:0]c_DatoLecOut1;
+wire [31:0]c_DatoLecout2;
+wire [31:0]c_SignExtendOut;
+wire [5:0]c_InstrctOut1;
+wire [5:0]c_InstructOut2;
+
+//BUFER EX/MEM
+wire [31:0]c_AddResOut3;
+wire c_ZeroFlagOut;
+wire [31:0]c_AluResOut1;
+wire [31:0]c_DatoLec2;
+wire c_MuxDOut;
+
+//BUFER MEM/WB
+wire reg [31:0]c_DataOut_Out;
+wire reg [31:0]c_AluResOut2;
+wire reg [4:0]c_MuxD_Out;
+
+//MUX_E
+wire [4:0]c_sal2;
+
+//Mux_F
+wire c_C1;
+
+Mux_F muxf(
+    .A1(c_sum),
+    .B1(AddResOut),
+    .sel1(c_and),
+    .C1(c_C1)
+);
+
+mpc PC(
     .clk(inclk),
-    .inin(c_mux3),
+    .inin(c_C1),
     .inou(c_inou)
 );
 
-Sum ins0(
-     .E(c_inou),
-     .Sum(c_sum)
+
+Sum sumador(
+    .E(c_inou),
+    .Sum(c_sum)
 );
-
-// ADD ins10(
-//     .A(c_inou),
-//     .B(32'd4),
-//     .C(c_sum)
-// );
-
-memins ins01(
+memins MemInst(
     .adr(c_inou),
     .instruccion(c_instruc)
 );
 
-Registro ins1(
-    .enesc(c_enesc),
-    .dirlec1(c_instruc[25:21]),
-    .dirlec2(c_instruc[20:16]),
-    .datoesc(c_mux1),
-    .diresc(c_mux2),
-    .datolec1(c_datolec1),
-    .datolec2(c_datolec2)
-);
-Mem ins2(
-    .dir(c_result),
-    .memwrites(c_memwrite),
-    .memreads(c_memreads),
-    .datain(c_datolec2),
-    .dataout(c_dataout)
+//Bufer IF/ID
+Bufer_IF_ID  bufer1(
+    .Adder(c_sum),
+    .instmem(c_instruc),
+    .AdderOut(c_AdderOut1),
+    .instmemOut(c_instmemOut)
 );
 
-Alucontrol ins4(
-    .ins(c_instruc[5:0]),
-    .uc(c_alop),
-    .so(c_so)
-);
-
-Alu ins3(
-    .sel(c_so),
-    .op1(c_datolec1),
-    .op2(c_mux4),
-    .Result(c_result),
-    .zflag(c_zflag)
-);
-
-
-
-Unidad ins5(
+Unidad UC(
     .op(c_instruc[31:26]),
     .regdst(c_regdst),
     .branch(c_branch),
@@ -123,11 +134,14 @@ Unidad ins5(
     .alop(c_alop)
 );
 
-mux32 ins6(
-    .o1(c_dataout),
-    .o2(c_result),
-    .sell(c_select),
-    .sal(c_mux1)
+Registro Banco(
+    .enesc(c_enesc),
+    .dirlec1(c_instruc[25:21]),
+    .dirlec2(c_instruc[20:16]),
+    .datoesc(c_mux1),
+    .diresc(c_MuxD_Out),
+    .datolec1(c_datolec1),
+    .datolec2(c_datolec2)
 );
 
 mux5 ins7(
@@ -137,11 +151,51 @@ mux5 ins7(
     .sal2(c_mux2)
 );
 
-// MUX323 ins8(
-//     .o5(c_sum),
-//     .select3(c_and),
-//     .sal3(c_mux3)
-// );
+SignExtend SignEx(
+    .SignIn(c_instruc[15:0]),
+    .SignOut(c_SignOut)
+);
+
+//Bufer ID/EX
+Bufer_ID_EX bufer2(
+    .Adder(c_AdderOut1),
+    .InDatoLec1(c_datolec1),
+    .InDatoLec2(c_datolec2),
+    .InSignExtend(c_SignOut),
+    .InInstruc1(c_instruc[20:16]),
+    .InInstruct2(c_instruc[15:11]),
+    .AdderOut(c_AdderOut2),
+    .DatoLecOut1(c_DatoLecOut1),
+    .DatoLecOut2(c_DatoLecout2),
+    .SignExtendOut(c_SignExtendOut),
+    .InstrctOut1(c_InstrctOut1),
+    .InstructOut2(c_InstructOut2)
+);
+
+ShiftLeft Shift(
+    .ShiftIn(c_SignOut),
+    .ShiftOut(c_ShiftOut)
+);
+
+Alucontrol Aluc(
+    .ins(c_instruc[5:0]),
+    .uc(c_alop),
+    .so(c_so)
+);
+
+ALU1 alu(
+    .sel(c_so),
+    .op1(c_datolec1),
+    .op2(c_mux4),
+    .Result(c_result),
+    .zflag(c_zflag)
+);
+
+ADD Adder(
+    .A(c_sum),
+    .B(c_ShiftOut),
+    .AddOut(c_AddOut)
+);
 
 muxD ins8(
     .pc_adder(c_sum),
@@ -154,6 +208,55 @@ MUX323 ins9(
     .o5(c_datolec2),
     .select3(c_alusrc),
     .sal3(c_mux4)
+);
+
+Mux_E muxE(
+    .instruc1(c_InstrctOut1),
+    .instruc2(c_InstructOut2),
+    .selec(c_regdst),
+    .sal2(c_sal2)
+);
+
+//Bufer EX/MEM
+Bufer_EX_MEM bufer3(
+    .InAddRes(c_AddOut),
+    .InZeroFlag(c_zflag),
+    .InAluRes(c_result),
+    .InDatoLec2(c_datolec2),
+    .InMuxD(c_sal2),
+    .AddResOut(c_AddResOut3),
+    .ZeroFlagOut(c_ZeroFlagOut),
+    .AluResOut1(c_AluResOut1),
+    .DatoLec2(c_DatoLec2),
+    .MuxDOut(c_MuxDOut) 
+);
+
+assign c_and = c_zflag & c_branch;
+
+Mem memoria(
+    .dir(c_result),
+    .memwrites(c_memwrite),
+    .memreads(c_memreads),
+    .datain(c_datolec2),
+    .dataout(c_dataout)
+);
+
+//Bufer MEM/WB
+
+Bufer_MEM_WB bufer4(
+    .InDataOut(c_dataout),
+    .InAluRes(c_result),
+    .InMuxD(c_MuxDOut),
+    .DataOut_Out(C_DataOut_Out),
+    .AluResOut2(c_AluResOut2),
+    .MuxD_Out(c_MuxD_Out)
+);
+
+mux32 ins6(
+    .o1(c_dataout),
+    .o2(c_result),
+    .sell(c_select),
+    .sal(c_mux1)
 );
 
 endmodule

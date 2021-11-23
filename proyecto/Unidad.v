@@ -13,12 +13,12 @@ module Unidad(
 always @* begin
 	case (op)
 		6'b000000: begin
-			regdst=1'b1;
+			regdst=1'b0;
 			branch=1'b0;
-			memread=1'b0;
-			memreg=1'b0;
+			memread=1'b1;
+			memreg=1'b1;
 			memwrite=1'b0;
-			alusrc=1'b0;
+			alusrc=1'b1;
 			regwrite=1'b1;
 			alop=3'b111;
 		end

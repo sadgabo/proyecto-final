@@ -1,15 +1,15 @@
 `timescale 1ns/1ns
 
 module SignExtend(
-    input [15:0]SEentrada,
-    output reg[31:0]SEsalida
+    input [15:0]SignIn,
+    output reg[31:0]SignOut
 );
 
 always @*
 begin
-    if(SEentrada[15])
-        SEsalida={16'd1,SEentrada};
+    if(SignIn[15])
+        SignOut={16'd1,SignIn};
     else
-        SEsalida={16'd0,SEentrada};
+        SignOut={16'd0,SignIn};
 end
 endmodule

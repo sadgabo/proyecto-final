@@ -1,4 +1,6 @@
-module Alu(
+`timescale 1ns/1ns
+
+module ALU1(
    input [31:0]op1,
    input [31:0]op2,
    input [2:0]sel,

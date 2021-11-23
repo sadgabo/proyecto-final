@@ -3,9 +3,9 @@
 module ADD (
     input [31:0]A,
     input [31:0]B,
-    output [31:0]C
+    output [31:0]AddOut
 );
 
-assign C = A + B;
+assign AddOut = A + B;
 
 endmodule

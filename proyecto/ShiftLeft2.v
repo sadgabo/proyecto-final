@@ -1,10 +1,10 @@
 `timescale 1ns/1ns
 
 module ShiftLeft(
-    input [31:0]entrada,
-    output [31:0]salida
+    input [31:0]ShiftIn,
+    output [31:0]ShiftOut
 );
 
-assign salida = entrada << 2;
+assign ShiftOut = ShiftIn << 2;
 
 endmodule 
