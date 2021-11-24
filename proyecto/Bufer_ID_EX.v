@@ -7,15 +7,23 @@ module Bufer_ID_EX(
     input [31:0]InSignExtend,
     input [4:0]InInstruc1,
     input [4:0]InInstruct2,
+    input clk,
     output reg [31:0]AdderOut,
     output reg [31:0]DatoLecOut1,
     output reg [31:0]DatoLecOut2,
     output reg [31:0]SignExtendOut,
-    output reg [5:0]InstrctOut1,
-    output reg [5:0]InstructOut2
+    output reg [4:0]InstrctOut1,
+    output reg [4:0]InstructOut2
 );
-
-always @* 
+initial begin
+    AdderOut=0;
+    DatoLecOut1=0;
+    DatoLecOut2=0;
+    SignExtendOut=0;
+    InstrctOut1=0;
+    InstructOut2=0;
+end
+always @(posedge clk)
 begin
     AdderOut = Adder;
     DatoLecOut1 = InDatoLec1;

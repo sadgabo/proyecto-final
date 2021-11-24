@@ -4,7 +4,7 @@ module Alucontrol(
 	input [5:0]ins,
 	output reg [2:0]so
 );
-always@*
+always@*begin
 	case(uc)
 		3'b111: begin
 			case (ins)
@@ -14,6 +14,16 @@ always@*
 			6'b100010: so = 3'b100;
 			6'b101010: so = 3'b101;
 			endcase
-		end
+			end
+		3'b000:so = 3'b000; //ADDI
+ 		
+		3'b101: so = 3'b101;  //ANDI
+		
+		3'b010: so = 3'b010;  //SLTI
+		
+		3'b110: so = 3'b110; //ORI
 	endcase
+	
+end
+
 endmodule

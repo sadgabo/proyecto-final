@@ -5,15 +5,23 @@ module Bufer_EX_MEM(
     input InZeroFlag,
     input [31:0]InAluRes,
     input [31:0]InDatoLec2,
-    input InMuxD,
+    input [4:0]InMuxD,
+    input clk,
     output reg [31:0]AddResOut,
     output reg ZeroFlagOut,
     output reg [31:0]AluResOut1,
     output reg [31:0]DatoLec2,
-    output reg MuxDOut
+    output reg [4:0]MuxDOut
 );
+initial begin
+    AddResOut=0;
+    ZeroFlagOut=0;
+    AluResOut1=0;
+    DatoLec2=0;
+    MuxDOut=0;
+end
 
-always @* 
+always @(posedge clk) 
 begin
     AddResOut = InAddRes;
     ZeroFlagOut = InZeroFlag;

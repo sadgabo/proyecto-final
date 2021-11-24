@@ -15,8 +15,8 @@ always @* begin
          3'b011: Result = op1 * op2;
          3'b100: Result = op1 / op2;
          3'b101: Result = op1 & op2;
-         3'b111: Result = op1 | op2;
-         3'b110: Result = op1 << 1;
+         3'b110: Result = op1 | op2;
+         3'b111: Result = op1 << 1;
          3'b010: Result = op1 < op2 ? 1 : 0; //op1 ^ op2;
      endcase
      zflag<=(!Result)? 0 : 1;

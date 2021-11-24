@@ -3,6 +3,7 @@ module Fase1(
     input 	inclk
 );
 
+
 // Banco de registro 
 wire [31:0]c_datolec1;
 wire [31:0]c_datolec2;
@@ -70,8 +71,8 @@ wire [31:0]c_AdderOut2;
 wire [31:0]c_DatoLecOut1;
 wire [31:0]c_DatoLecout2;
 wire [31:0]c_SignExtendOut;
-wire [5:0]c_InstrctOut1;
-wire [5:0]c_InstructOut2;
+wire [4:0]c_InstrctOut1;
+wire [4:0]c_InstructOut2;
 
 //BUFER EX/MEM
 wire [31:0]c_AddResOut3;
@@ -81,19 +82,19 @@ wire [31:0]c_DatoLec2;
 wire c_MuxDOut;
 
 //BUFER MEM/WB
-wire reg [31:0]c_DataOut_Out;
-wire reg [31:0]c_AluResOut2;
-wire reg [4:0]c_MuxD_Out;
+wire  [31:0]c_DataOut_Out;
+wire  [31:0]c_AluResOut2;
+wire  [4:0]c_MuxD_Out;
 
 //MUX_E
 wire [4:0]c_sal2;
 
 //Mux_F
-wire c_C1;
+wire [31:0]c_C1;
 
 Mux_F muxf(
     .A1(c_sum),
-    .B1(AddResOut),
+    .B1(c_AddResOut3),
     .sel1(c_and),
     .C1(c_C1)
 );
@@ -118,6 +119,7 @@ memins MemInst(
 Bufer_IF_ID  bufer1(
     .Adder(c_sum),
     .instmem(c_instruc),
+    .clk(inclk),
     .AdderOut(c_AdderOut1),
     .instmemOut(c_instmemOut)
 );
@@ -164,6 +166,7 @@ Bufer_ID_EX bufer2(
     .InSignExtend(c_SignOut),
     .InInstruc1(c_instruc[20:16]),
     .InInstruct2(c_instruc[15:11]),
+    .clk(inclk),
     .AdderOut(c_AdderOut2),
     .DatoLecOut1(c_DatoLecOut1),
     .DatoLecOut2(c_DatoLecout2),
@@ -224,11 +227,12 @@ Bufer_EX_MEM bufer3(
     .InAluRes(c_result),
     .InDatoLec2(c_datolec2),
     .InMuxD(c_sal2),
+    .clk(inclk),
     .AddResOut(c_AddResOut3),
     .ZeroFlagOut(c_ZeroFlagOut),
     .AluResOut1(c_AluResOut1),
     .DatoLec2(c_DatoLec2),
-    .MuxDOut(c_MuxDOut) 
+    .MuxDOut(c_MuxD_Out) 
 );
 
 assign c_and = c_zflag & c_branch;
@@ -247,9 +251,10 @@ Bufer_MEM_WB bufer4(
     .InDataOut(c_dataout),
     .InAluRes(c_result),
     .InMuxD(c_MuxDOut),
-    .DataOut_Out(C_DataOut_Out),
+    .clk(inclk),
+    .DataOut_Out(c_DataOut_Out),
     .AluResOut2(c_AluResOut2),
-    .MuxD_Out(c_MuxD_Out)
+    .MuxD_Out(c_MuxDOut)
 );
 
 mux32 ins6(

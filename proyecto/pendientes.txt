@@ -1,0 +1,14 @@
+modificar las señales de todos los cases de la unidadde control
+
+error del sumador de la fase 1 
+
+ref des0 
+rewrite 1
+alusrc 1
+aluop //combinacion a la suma 
+memw 0
+memre 0
+mem tor eg 0
+branch  0
+
+ 

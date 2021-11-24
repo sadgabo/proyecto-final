@@ -1,5 +1,5 @@
 $date
-	Fri Nov 19 14:02:28 2021
+	Wed Nov 24 13:49:23 2021
 $end
 $version
 	Icarus Verilog
@@ -16,97 +16,336 @@ $var wire 1 # c_zflag $end
 $var wire 32 $ c_sum [31:0] $end
 $var wire 3 % c_so [2:0] $end
 $var wire 1 & c_select $end
-$var wire 32 ' c_result [31:0] $end
-$var wire 1 ( c_regdst $end
-$var wire 32 ) c_mux4 [31:0] $end
-$var wire 32 * c_mux3 [31:0] $end
-$var wire 5 + c_mux2 [4:0] $end
-$var wire 32 , c_mux1 [31:0] $end
-$var wire 1 - c_memwrite $end
-$var wire 1 . c_memreads $end
-$var wire 32 / c_instruc [31:0] $end
-$var wire 32 0 c_inou [31:0] $end
-$var wire 1 1 c_enesc $end
-$var wire 32 2 c_datolec2 [31:0] $end
-$var wire 32 3 c_datolec1 [31:0] $end
-$var wire 32 4 c_dataout [31:0] $end
-$var wire 1 5 c_branch $end
-$var wire 1 6 c_alusrc $end
-$var wire 3 7 c_alop [2:0] $end
-$scope module ins $end
+$var wire 5 ' c_sal2 [4:0] $end
+$var wire 32 ( c_result [31:0] $end
+$var wire 1 ) c_regdst $end
+$var wire 32 * c_mux4 [31:0] $end
+$var wire 32 + c_mux3 [31:0] $end
+$var wire 5 , c_mux2 [4:0] $end
+$var wire 32 - c_mux1 [31:0] $end
+$var wire 1 . c_memwrite $end
+$var wire 1 / c_memreads $end
+$var wire 32 0 c_instruc [31:0] $end
+$var wire 32 1 c_instmemOut [31:0] $end
+$var wire 32 2 c_inou [31:0] $end
+$var wire 1 3 c_enesc $end
+$var wire 32 4 c_datolec2 [31:0] $end
+$var wire 32 5 c_datolec1 [31:0] $end
+$var wire 32 6 c_dataout [31:0] $end
+$var wire 1 7 c_branch $end
+$var wire 1 8 c_alusrc $end
+$var wire 3 9 c_alop [2:0] $end
+$var wire 1 : c_ZeroFlagOut $end
+$var wire 32 ; c_SignOut [31:0] $end
+$var wire 32 < c_SignExtendOut [31:0] $end
+$var wire 32 = c_ShiftOut [31:0] $end
+$var wire 5 > c_MuxD_Out [4:0] $end
+$var wire 1 ? c_MuxDOut $end
+$var wire 5 @ c_InstructOut2 [4:0] $end
+$var wire 5 A c_InstrctOut1 [4:0] $end
+$var wire 32 B c_DatoLecout2 [31:0] $end
+$var wire 32 C c_DatoLecOut1 [31:0] $end
+$var wire 32 D c_DatoLec2 [31:0] $end
+$var wire 32 E c_DataOut_Out [31:0] $end
+$var wire 32 F c_C1 [31:0] $end
+$var wire 32 G c_AluResOut2 [31:0] $end
+$var wire 32 H c_AluResOut1 [31:0] $end
+$var wire 32 I c_AdderOut2 [31:0] $end
+$var wire 32 J c_AdderOut1 [31:0] $end
+$var wire 32 K c_AddResOut3 [31:0] $end
+$var wire 32 L c_AddOut [31:0] $end
+$scope module Adder $end
+$var wire 32 M B [31:0] $end
+$var wire 32 N AddOut [31:0] $end
+$var wire 32 O A [31:0] $end
+$upscope $end
+$scope module Aluc $end
+$var wire 6 P ins [5:0] $end
+$var wire 3 Q uc [2:0] $end
+$var reg 3 R so [2:0] $end
+$upscope $end
+$scope module Banco $end
+$var wire 5 S dirlec1 [4:0] $end
+$var wire 5 T dirlec2 [4:0] $end
+$var wire 1 3 enesc $end
+$var wire 5 U diresc [4:0] $end
+$var wire 32 V datoesc [31:0] $end
+$var reg 32 W datolec1 [31:0] $end
+$var reg 32 X datolec2 [31:0] $end
+$upscope $end
+$scope module MemInst $end
+$var wire 32 Y adr [31:0] $end
+$var reg 32 Z instruccion [31:0] $end
+$upscope $end
+$scope module PC $end
 $var wire 1 ! clk $end
-$var wire 32 8 inin [31:0] $end
-$var reg 32 9 inou [31:0] $end
+$var wire 32 [ inin [31:0] $end
+$var reg 32 \ inou [31:0] $end
 $upscope $end
-$scope module ins0 $end
-$var wire 32 : E [31:0] $end
-$var wire 32 ; Sum [31:0] $end
+$scope module Shift $end
+$var wire 32 ] ShiftOut [31:0] $end
+$var wire 32 ^ ShiftIn [31:0] $end
 $upscope $end
-$scope module ins01 $end
-$var wire 32 < adr [31:0] $end
-$var reg 32 = instruccion [31:0] $end
+$scope module SignEx $end
+$var wire 16 _ SignIn [15:0] $end
+$var reg 32 ` SignOut [31:0] $end
 $upscope $end
-$scope module ins1 $end
-$var wire 5 > dirlec1 [4:0] $end
-$var wire 5 ? dirlec2 [4:0] $end
-$var wire 1 1 enesc $end
-$var wire 5 @ diresc [4:0] $end
-$var wire 32 A datoesc [31:0] $end
-$var reg 32 B datolec1 [31:0] $end
-$var reg 32 C datolec2 [31:0] $end
+$scope module UC $end
+$var wire 6 a op [5:0] $end
+$var reg 3 b alop [2:0] $end
+$var reg 1 8 alusrc $end
+$var reg 1 7 branch $end
+$var reg 1 / memread $end
+$var reg 1 & memreg $end
+$var reg 1 . memwrite $end
+$var reg 1 ) regdst $end
+$var reg 1 3 regwrite $end
 $upscope $end
-$scope module ins2 $end
-$var wire 32 D datain [31:0] $end
-$var wire 1 - memwrites $end
-$var wire 1 . memreads $end
-$var wire 32 E dir [31:0] $end
-$var reg 32 F dataout [31:0] $end
-$upscope $end
-$scope module ins3 $end
-$var wire 32 G op1 [31:0] $end
-$var wire 3 H sel [2:0] $end
-$var wire 32 I op2 [31:0] $end
-$var reg 32 J Result [31:0] $end
+$scope module alu $end
+$var wire 32 c op1 [31:0] $end
+$var wire 3 d sel [2:0] $end
+$var wire 32 e op2 [31:0] $end
+$var reg 32 f Result [31:0] $end
 $var reg 1 # zflag $end
 $upscope $end
-$scope module ins4 $end
-$var wire 6 K ins [5:0] $end
-$var wire 3 L uc [2:0] $end
-$var reg 3 M so [2:0] $end
+$scope module bufer1 $end
+$var wire 1 ! clk $end
+$var wire 32 g instmem [31:0] $end
+$var wire 32 h Adder [31:0] $end
+$var reg 32 i AdderOut [31:0] $end
+$var reg 32 j instmemOut [31:0] $end
 $upscope $end
-$scope module ins5 $end
-$var wire 6 N op [5:0] $end
-$var reg 3 O alop [2:0] $end
-$var reg 1 6 alusrc $end
-$var reg 1 5 branch $end
-$var reg 1 . memread $end
-$var reg 1 & memreg $end
-$var reg 1 - memwrite $end
-$var reg 1 ( regdst $end
-$var reg 1 1 regwrite $end
+$scope module bufer2 $end
+$var wire 32 k Adder [31:0] $end
+$var wire 32 l InDatoLec1 [31:0] $end
+$var wire 32 m InDatoLec2 [31:0] $end
+$var wire 5 n InInstruc1 [4:0] $end
+$var wire 5 o InInstruct2 [4:0] $end
+$var wire 32 p InSignExtend [31:0] $end
+$var wire 1 ! clk $end
+$var reg 32 q AdderOut [31:0] $end
+$var reg 32 r DatoLecOut1 [31:0] $end
+$var reg 32 s DatoLecOut2 [31:0] $end
+$var reg 5 t InstrctOut1 [4:0] $end
+$var reg 5 u InstructOut2 [4:0] $end
+$var reg 32 v SignExtendOut [31:0] $end
+$upscope $end
+$scope module bufer3 $end
+$var wire 32 w InAddRes [31:0] $end
+$var wire 32 x InAluRes [31:0] $end
+$var wire 32 y InDatoLec2 [31:0] $end
+$var wire 1 # InZeroFlag $end
+$var wire 1 ! clk $end
+$var wire 5 z InMuxD [4:0] $end
+$var reg 32 { AddResOut [31:0] $end
+$var reg 32 | AluResOut1 [31:0] $end
+$var reg 32 } DatoLec2 [31:0] $end
+$var reg 5 ~ MuxDOut [4:0] $end
+$var reg 1 : ZeroFlagOut $end
+$upscope $end
+$scope module bufer4 $end
+$var wire 32 !" InAluRes [31:0] $end
+$var wire 1 ! clk $end
+$var wire 1 ? InMuxD $end
+$var wire 32 "" InDataOut [31:0] $end
+$var reg 32 #" AluResOut2 [31:0] $end
+$var reg 32 $" DataOut_Out [31:0] $end
+$var reg 1 ? MuxD_Out $end
 $upscope $end
 $scope module ins6 $end
-$var wire 32 P o1 [31:0] $end
-$var wire 32 Q o2 [31:0] $end
+$var wire 32 %" o2 [31:0] $end
 $var wire 1 & sell $end
-$var reg 32 R sal [31:0] $end
+$var wire 32 &" o1 [31:0] $end
+$var reg 32 '" sal [31:0] $end
 $upscope $end
 $scope module ins7 $end
-$var wire 5 S o3 [4:0] $end
-$var wire 5 T o4 [4:0] $end
-$var wire 1 ( selec $end
-$var reg 5 U sal2 [4:0] $end
+$var wire 5 (" o3 [4:0] $end
+$var wire 5 )" o4 [4:0] $end
+$var wire 1 ) selec $end
+$var reg 5 *" sal2 [4:0] $end
 $upscope $end
 $scope module ins8 $end
-$var wire 32 V pc_adder [31:0] $end
 $var wire 1 " sel $end
-$var wire 32 W shift_adder [31:0] $end
-$var reg 32 X pc_out [31:0] $end
+$var wire 32 +" shift_adder [31:0] $end
+$var wire 32 ," pc_adder [31:0] $end
+$var reg 32 -" pc_out [31:0] $end
 $upscope $end
 $scope module ins9 $end
-$var wire 32 Y o5 [31:0] $end
-$var wire 1 6 select3 $end
-$var reg 32 Z sal3 [31:0] $end
+$var wire 32 ." o5 [31:0] $end
+$var wire 1 8 select3 $end
+$var reg 32 /" sal3 [31:0] $end
+$upscope $end
+$scope module memoria $end
+$var wire 32 0" datain [31:0] $end
+$var wire 32 1" dir [31:0] $end
+$var wire 1 / memreads $end
+$var wire 1 . memwrites $end
+$var reg 32 2" dataout [31:0] $end
+$upscope $end
+$scope module muxE $end
+$var wire 5 3" instruc1 [4:0] $end
+$var wire 5 4" instruc2 [4:0] $end
+$var wire 1 ) selec $end
+$var reg 5 5" sal2 [4:0] $end
+$upscope $end
+$scope module muxf $end
+$var wire 32 6" B1 [31:0] $end
+$var wire 1 " sel1 $end
+$var wire 32 7" A1 [31:0] $end
+$var reg 32 8" C1 [31:0] $end
+$upscope $end
+$scope module sumador $end
+$var wire 32 9" E [31:0] $end
+$var wire 32 :" Sum [31:0] $end
 $upscope $end
 $upscope $end
 $upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100 :"
+b0 9"
+b0 8"
+b100 7"
+b0 6"
+b0 5"
+b0 4"
+b0 3"
+bx 2"
+bx 1"
+bx 0"
+bx /"
+bx ."
+b100 -"
+b100 ,"
+b0 +"
+b0 *"
+b0 )"
+b0 ("
+bx '"
+bx &"
+bx %"
+b0 $"
+b0 #"
+bx ""
+bx !"
+b0 ~
+b0 }
+b0 |
+b0 {
+b0 z
+bx y
+bx x
+b100 w
+b0 v
+b0 u
+b0 t
+b0 s
+b0 r
+b0 q
+b0 p
+b0 o
+b0 n
+bx m
+bx l
+b0 k
+b0 j
+b0 i
+b100 h
+b0 g
+bx f
+bx e
+bx d
+bx c
+b111 b
+b0 a
+b0 `
+b0 _
+b0 ^
+b0 ]
+b0 \
+b0 [
+b0 Z
+b0 Y
+bx X
+bx W
+bx V
+b0 U
+b0 T
+b0 S
+bx R
+b111 Q
+b0 P
+b100 O
+b100 N
+b0 M
+b100 L
+b0 K
+b0 J
+b0 I
+b0 H
+b0 G
+b0 F
+b0 E
+b0 D
+b0 C
+b0 B
+b0 A
+b0 @
+0?
+b0 >
+b0 =
+b0 <
+b0 ;
+0:
+b111 9
+08
+07
+bx 6
+bx 5
+bx 4
+13
+b0 2
+b0 1
+b0 0
+0/
+0.
+bx -
+b0 ,
+b100 +
+bx *
+1)
+bx (
+b0 '
+0&
+bx %
+b100 $
+x#
+0"
+0!
+$end
+#50
+b100 F
+b100 [
+b100 8"
+b100 J
+b100 i
+b100 k
+bx B
+bx s
+bx C
+bx r
+bx D
+bx }
+bx H
+bx |
+x:
+b100 K
+b100 {
+b100 6"
+bx G
+bx #"
+bx E
+bx $"
+1!
+#100
