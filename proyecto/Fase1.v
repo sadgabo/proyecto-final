@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 module Fase1(
-    input 	inclk
+    input 	clk
 );
 
 
@@ -100,7 +100,7 @@ Mux_F muxf(
 );
 
 mpc PC(
-    .clk(inclk),
+    .clk(clk),
     .inin(c_C1),
     .inou(c_inou)
 );
@@ -119,7 +119,7 @@ memins MemInst(
 Bufer_IF_ID  bufer1(
     .Adder(c_sum),
     .instmem(c_instruc),
-    .clk(inclk),
+    .clk(clk),
     .AdderOut(c_AdderOut1),
     .instmemOut(c_instmemOut)
 );
@@ -166,7 +166,7 @@ Bufer_ID_EX bufer2(
     .InSignExtend(c_SignOut),
     .InInstruc1(c_instruc[20:16]),
     .InInstruct2(c_instruc[15:11]),
-    .clk(inclk),
+    .clk(clk),
     .AdderOut(c_AdderOut2),
     .DatoLecOut1(c_DatoLecOut1),
     .DatoLecOut2(c_DatoLecout2),
@@ -200,15 +200,10 @@ ADD Adder(
     .AddOut(c_AddOut)
 );
 
-muxD ins8(
-    .pc_adder(c_sum),
-    .shift_adder(32'd0),
-	.sel(c_and),
-	.pc_out(c_mux3)
-);
 
 MUX323 ins9(
     .o5(c_datolec2),
+    //.o6(c_SignExtendOut),
     .select3(c_alusrc),
     .sal3(c_mux4)
 );
@@ -227,7 +222,7 @@ Bufer_EX_MEM bufer3(
     .InAluRes(c_result),
     .InDatoLec2(c_datolec2),
     .InMuxD(c_sal2),
-    .clk(inclk),
+    .clk(clk),
     .AddResOut(c_AddResOut3),
     .ZeroFlagOut(c_ZeroFlagOut),
     .AluResOut1(c_AluResOut1),
@@ -251,11 +246,13 @@ Bufer_MEM_WB bufer4(
     .InDataOut(c_dataout),
     .InAluRes(c_result),
     .InMuxD(c_MuxDOut),
-    .clk(inclk),
+    .clk(clk),
     .DataOut_Out(c_DataOut_Out),
     .AluResOut2(c_AluResOut2),
     .MuxD_Out(c_MuxDOut)
 );
+
+
 
 mux32 ins6(
     .o1(c_dataout),

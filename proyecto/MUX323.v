@@ -2,6 +2,7 @@
 
 module MUX323(
 	input [31:0]o5,
+	input [31:0]o6,
 	input select3,
 	output reg [31:0]sal3
 );
@@ -15,7 +16,7 @@ always@* begin
 		end
 		1'b1:
 		begin
-			sal3=32'd1;
+			sal3=o6;
 		end
 
 	endcase

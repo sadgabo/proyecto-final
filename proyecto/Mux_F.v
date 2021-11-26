@@ -10,8 +10,9 @@ module Mux_F (
 always @* 
 begin
     case(sel1)
-        32'b1: C1 = A1;
-        32'B0: C1 = B1;
+        1'b0: C1 = A1;
+
+        1'b1: C1 = B1;
     endcase
 end
 endmodule

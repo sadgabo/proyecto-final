@@ -8,10 +8,11 @@ Fase1 duv(clk);
 	initial begin
 	$dumpfile("fase1_dp_tb.vcd");
     $dumpvars(0,fase1_dp_tb);
-	clk<=0;
+	forever begin 
+		clk<=0;
+	 #50clk=~clk;
 	#300;
 	end
-
-	always #50 clk = ~clk;	
+	end
 
 endmodule	

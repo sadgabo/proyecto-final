@@ -5,7 +5,7 @@ module Sum(
 	output[31:0]Sum
 );
 
-assign Sum = E + 32'd4;
+assign Sum = E + 4;
 
 endmodule
 

@@ -13,10 +13,11 @@ reg [31:0] brr [0:31];
 initial $readmemb("TestF1_Breg.mem", brr);
 
 always @* begin
-	datolec1 = brr[dirlec1];
-	datolec2 = brr[dirlec2];
 
-	if(enesc == 1)
+	if(enesc == 1)begin
 		brr[diresc] <= datoesc;
+	end
+	datolec1 <= brr[dirlec1];
+	datolec2 <= brr[dirlec2];
 end
 endmodule
