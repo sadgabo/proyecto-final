@@ -1,0 +1,214 @@
+$date
+	Sat Nov 27 19:31:28 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module fase1_dp_TB $end
+$var reg 1 ! clk $end
+$scope module duv $end
+$var wire 1 " c_And $end
+$var wire 1 ! clk $end
+$var wire 1 # c_ZeroFlag $end
+$var wire 32 $ c_Sum [31:0] $end
+$var wire 32 % c_Result [31:0] $end
+$var wire 1 & c_RegWrite $end
+$var wire 1 ' c_RegDst $end
+$var wire 32 ( c_ReadData2 [31:0] $end
+$var wire 32 ) c_ReadData1 [31:0] $end
+$var wire 32 * c_ReadData [31:0] $end
+$var wire 1 + c_MemWrite $end
+$var wire 1 , c_MemReg $end
+$var wire 1 - c_MemRead $end
+$var wire 32 . c_Instruc [31:0] $end
+$var wire 32 / c_InstOut [31:0] $end
+$var wire 32 0 c_CD [31:0] $end
+$var wire 32 1 c_CC [31:0] $end
+$var wire 32 2 c_CB [31:0] $end
+$var wire 5 3 c_CA [4:0] $end
+$var wire 1 4 c_Branch $end
+$var wire 1 5 c_AluSrc $end
+$var wire 3 6 c_AluOut [2:0] $end
+$var wire 3 7 c_AluOp [2:0] $end
+$scope module Adder4 $end
+$var wire 32 8 Sum [31:0] $end
+$var wire 32 9 E [31:0] $end
+$upscope $end
+$scope module AluCon $end
+$var wire 6 : Instruction [5:0] $end
+$var wire 3 ; UC [2:0] $end
+$var reg 3 < AluOut [2:0] $end
+$upscope $end
+$scope module Banco $end
+$var wire 5 = ReadReg1 [4:0] $end
+$var wire 5 > ReadReg2 [4:0] $end
+$var wire 1 & enesc $end
+$var wire 5 ? WriteRegister [4:0] $end
+$var wire 32 @ WriteData [31:0] $end
+$var reg 32 A ReadData1 [31:0] $end
+$var reg 32 B ReadData2 [31:0] $end
+$upscope $end
+$scope module UC $end
+$var wire 6 C OpCode [5:0] $end
+$var reg 3 D AluOp [2:0] $end
+$var reg 1 5 AluSrc $end
+$var reg 1 4 Branch $end
+$var reg 1 - MemRead $end
+$var reg 1 , MemReg $end
+$var reg 1 + MemWrite $end
+$var reg 1 ' RegDst $end
+$var reg 1 & RegWrite $end
+$upscope $end
+$scope module alu $end
+$var wire 32 E OP1 [31:0] $end
+$var wire 3 F Sel [2:0] $end
+$var wire 32 G OP2 [31:0] $end
+$var reg 32 H Result [31:0] $end
+$var reg 1 # ZeroFlag $end
+$upscope $end
+$scope module meminst $end
+$var wire 32 I adr [31:0] $end
+$var reg 32 J instruc [31:0] $end
+$upscope $end
+$scope module memoria $end
+$var wire 32 K Address [31:0] $end
+$var wire 1 - MemRead $end
+$var wire 1 + MemWrite $end
+$var wire 32 L WriteData [31:0] $end
+$var reg 32 M ReadData [31:0] $end
+$upscope $end
+$scope module mux1 $end
+$var wire 5 N A [4:0] $end
+$var wire 5 O B [4:0] $end
+$var wire 1 ' sel $end
+$var reg 5 P C [4:0] $end
+$upscope $end
+$scope module mux2 $end
+$var wire 32 Q A [31:0] $end
+$var wire 32 R B [31:0] $end
+$var wire 1 5 sel $end
+$var reg 32 S C [31:0] $end
+$upscope $end
+$scope module mux3 $end
+$var wire 32 T A [31:0] $end
+$var wire 32 U B [31:0] $end
+$var wire 1 " sel $end
+$var reg 32 V C [31:0] $end
+$upscope $end
+$scope module mux4 $end
+$var wire 32 W A [31:0] $end
+$var wire 32 X B [31:0] $end
+$var wire 1 , sel $end
+$var reg 32 Y C [31:0] $end
+$upscope $end
+$scope module pc $end
+$var wire 32 Z InstIn [31:0] $end
+$var wire 1 ! clk $end
+$var reg 32 [ InstOut [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 [
+b11 Z
+b11 Y
+b11 X
+bx W
+b100 V
+bz U
+b100 T
+b10 S
+bz R
+b10 Q
+b10100 P
+b10100 O
+b10 N
+bx M
+b10 L
+b11 K
+b1000101010000000100000 J
+b0 I
+b11 H
+b10 G
+b0 F
+b1 E
+b111 D
+b0 C
+b10 B
+b1 A
+b11 @
+b10100 ?
+b10 >
+b1 =
+b0 <
+b111 ;
+b100000 :
+b0 9
+b100 8
+b111 7
+b0 6
+05
+04
+b10100 3
+b10 2
+b100 1
+b11 0
+b0 /
+b1000101010000000100000 .
+0-
+0,
+0+
+bx *
+b1 )
+b10 (
+1'
+1&
+b11 %
+b100 $
+1#
+0"
+0!
+$end
+#50
+0#
+b0 0
+b0 @
+b0 Y
+b0 Z
+b0 2
+b0 G
+b0 S
+b0 %
+b0 H
+b0 K
+b0 X
+b0 (
+b0 B
+b0 L
+b0 Q
+b0 )
+b0 A
+b0 E
+b101000 :
+b0 >
+b0 =
+b1000 C
+b0 N
+b111 1
+b111 V
+b100000000000001010010010101000 .
+b100000000000001010010010101000 J
+b111 $
+b111 8
+b111 T
+b11 /
+b11 9
+b11 I
+b11 [
+0!
+#100
