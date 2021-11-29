@@ -3,7 +3,7 @@
 module MuxA(
     input [4:0]A,
     input [4:0]B,
-    inout sel,
+    input sel,
     output reg[4:0]C
 );
 

@@ -42,7 +42,7 @@ wire [31:0]c_CD;
 
 PC pc(
     .clk(clk),
-    .InstIn(c_CD),
+    .InstIn(c_CC),
     .InstOut(c_InstOut)
 );
 
