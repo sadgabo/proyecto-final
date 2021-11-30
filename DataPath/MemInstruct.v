@@ -7,7 +7,7 @@ module MemInstruct(
 
 reg [7:0]Sram[0:399];
 
-initial $readmemb("TestF1_MemInsts.mem",Sram);
+initial $readmemb("TestF2_MemInst.mem",Sram);
 
 always @*begin
     instruc= { Sram[adr], Sram[adr+1], Sram[adr+2], Sram[adr+3] };

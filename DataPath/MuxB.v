@@ -8,7 +8,7 @@ module MuxB(
 always @* begin
 	case(sel)
 		1'b0: C = A;
-		1'b1: C = 0;
+		1'b1: C = B;
 	endcase
 end
 endmodule

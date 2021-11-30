@@ -17,6 +17,11 @@ always @* begin
             6'b101010: AluOut = 3'b010;//SLT
             endcase
         end 
+        3'b000: AluOut = 3'b000;//ADDI
+		3'b101: AluOut = 3'b101;//ANDI
+        3'b001: AluOut = 3'b001;//sub
+		3'b010: AluOut = 3'b010;//SLTI
+		3'b110: AluOut = 3'b110;//ORI
     endcase
 end
 endmodule

@@ -24,13 +24,19 @@ wire [2:0]c_AluOp;
 //Bando de Registros
 wire [31:0]c_ReadData1;
 wire [31:0]c_ReadData2;
+//SignExtend
+wire [31:0]c_SignExtendOut;
 //MuxB
 wire [31:0]c_CB;
+//ShiftLeft
+wire [31:0]c_ShiftLeftOut;
 //AluControl
 wire [2:0]c_AluOut;
 //Alu
 wire [31:0]c_Result;
 wire c_ZeroFlag;
+//ADD
+wire [31:0]c_Adder;
 //Compuerta and
 wire c_And;
 //MuxC
@@ -85,10 +91,21 @@ BancoRegistro Banco(
     .ReadData2(c_ReadData2)
 );
 
+SignExtend SE(
+    .InSingExtend(c_Instruc[15:0]),
+    .SignExtendOut(c_SignExtendOut)
+);
+
 MuxB mux2(
     .A(c_ReadData2),
+    .B(c_SignExtendOut),
     .sel(c_AluSrc),
     .C(c_CB)
+);
+
+ShiftLeft SL(
+    .ShifLeftIn(c_SignExtendOut),
+    .ShiftLeftOut(c_ShiftLeftOut)
 );
 
 AluControl AluCon(
@@ -105,10 +122,17 @@ Alu alu(
     .ZeroFlag(c_ZeroFlag)
 );
 
+ADD Adder(
+    .A(c_Sum),
+    .B(c_ShiftLeftOut),
+    .Adder(c_Adder)
+);
+
 assign c_And = c_Branch & c_ZeroFlag;
 
 MuxC mux3(
     .A(c_Sum),
+    .B(c_Adder),
     .sel(c_And),
     .C(c_CC)
 );
